@@ -26,9 +26,9 @@ public class DefaultCatalog extends CatalogImpl {
     public static final DefaultCatalog DEFAULT_CATALOG = new DefaultCatalog();
 
     /**
-     * The schema <code>public</code>.
+     * The schema <code>jooq_DB</code>.
      */
-    public final Public PUBLIC = Public.PUBLIC;
+    public final JooqDb JOOQ_DB = JooqDb.JOOQ_DB;
 
     /**
      * No further instances allowed
@@ -40,7 +40,7 @@ public class DefaultCatalog extends CatalogImpl {
     @Override
     public final List<Schema> getSchemas() {
         return Arrays.asList(
-            Public.PUBLIC
+            JooqDb.JOOQ_DB
         );
     }
 

@@ -6,13 +6,12 @@ package org.example.jooq.db.autocreated.tables;
 
 import java.util.function.Function;
 
+import org.example.jooq.db.autocreated.JooqDb;
 import org.example.jooq.db.autocreated.Keys;
-import org.example.jooq.db.autocreated.Public;
 import org.example.jooq.db.autocreated.tables.records.CompanyRecord;
 import org.jooq.Field;
 import org.jooq.ForeignKey;
 import org.jooq.Function2;
-import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Records;
@@ -37,7 +36,7 @@ public class Company extends TableImpl<CompanyRecord> {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The reference instance of <code>public.company</code>
+     * The reference instance of <code>jooq_DB.company</code>
      */
     public static final Company COMPANY = new Company();
 
@@ -50,12 +49,12 @@ public class Company extends TableImpl<CompanyRecord> {
     }
 
     /**
-     * The column <code>public.company.id</code>.
+     * The column <code>jooq_DB.company.id</code>.
      */
-    public final TableField<CompanyRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false).identity(true), this, "");
+    public final TableField<CompanyRecord, Long> ID = createField(DSL.name("id"), SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.company.name</code>.
+     * The column <code>jooq_DB.company.name</code>.
      */
     public final TableField<CompanyRecord, String> NAME = createField(DSL.name("name"), SQLDataType.VARCHAR(50).nullable(false), this, "");
 
@@ -68,21 +67,21 @@ public class Company extends TableImpl<CompanyRecord> {
     }
 
     /**
-     * Create an aliased <code>public.company</code> table reference
+     * Create an aliased <code>jooq_DB.company</code> table reference
      */
     public Company(String alias) {
         this(DSL.name(alias), COMPANY);
     }
 
     /**
-     * Create an aliased <code>public.company</code> table reference
+     * Create an aliased <code>jooq_DB.company</code> table reference
      */
     public Company(Name alias) {
         this(alias, COMPANY);
     }
 
     /**
-     * Create a <code>public.company</code> table reference
+     * Create a <code>jooq_DB.company</code> table reference
      */
     public Company() {
         this(DSL.name("company"), null);
@@ -94,17 +93,12 @@ public class Company extends TableImpl<CompanyRecord> {
 
     @Override
     public Schema getSchema() {
-        return aliased() ? null : Public.PUBLIC;
-    }
-
-    @Override
-    public Identity<CompanyRecord, Integer> getIdentity() {
-        return (Identity<CompanyRecord, Integer>) super.getIdentity();
+        return aliased() ? null : JooqDb.JOOQ_DB;
     }
 
     @Override
     public UniqueKey<CompanyRecord> getPrimaryKey() {
-        return Keys.COMPANY_PKEY;
+        return Keys.KEY_COMPANY_PRIMARY;
     }
 
     @Override
@@ -151,14 +145,14 @@ public class Company extends TableImpl<CompanyRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row2<Integer, String> fieldsRow() {
+    public Row2<Long, String> fieldsRow() {
         return (Row2) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function2<? super Integer, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function2<? super Long, ? super String, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -166,7 +160,7 @@ public class Company extends TableImpl<CompanyRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function2<? super Integer, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function2<? super Long, ? super String, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

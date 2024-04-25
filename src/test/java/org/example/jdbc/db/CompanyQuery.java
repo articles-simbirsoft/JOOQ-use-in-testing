@@ -15,7 +15,7 @@ public class CompanyQuery extends DefaultQuery implements CompanyFields {
 
     public CompanyDto getCompanyById(Long id)
             throws SQLException {
-        CompanyDto companyDto = null;
+        CompanyDto companyDto;
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(
                 getCompanyByIdStringQuery(id));
@@ -30,13 +30,13 @@ public class CompanyQuery extends DefaultQuery implements CompanyFields {
     }
 
     public static CompanyDto getCompanyByResultSet(ResultSet resultSet) throws SQLException {
-        CompanyDto companyDto = null;
-        if (resultSet.getInt(COMPANY_ID_FIELD) != 0) {
-            companyDto = new CompanyDto(
-                    resultSet.getInt(COMPANY_ID_FIELD),
-                    resultSet.getString(COMPANY_NAME_FIELD));
+        CompanyDto facilityResponseModel = null;
+        if (resultSet.next()) {
+            facilityResponseModel = new CompanyDto(
+                    resultSet.getInt(COMPANY_ID_FIELD_NAME),
+                    resultSet.getString(COMPANY_NAME_FIELD_NAME));
         }
-        return companyDto;
+        return facilityResponseModel;
     }
 
     private QueryBuilder getDefaultCompanyQuery() {

@@ -9,13 +9,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
+import org.example.jooq.db.autocreated.Indexes;
+import org.example.jooq.db.autocreated.JooqDb;
 import org.example.jooq.db.autocreated.Keys;
-import org.example.jooq.db.autocreated.Public;
 import org.example.jooq.db.autocreated.tables.records.AirplaneRecord;
 import org.jooq.Field;
 import org.jooq.ForeignKey;
 import org.jooq.Function4;
 import org.jooq.Identity;
+import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Records;
@@ -40,7 +42,7 @@ public class Airplane extends TableImpl<AirplaneRecord> {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The reference instance of <code>public.airplane</code>
+     * The reference instance of <code>jooq_DB.airplane</code>
      */
     public static final Airplane AIRPLANE = new Airplane();
 
@@ -53,24 +55,24 @@ public class Airplane extends TableImpl<AirplaneRecord> {
     }
 
     /**
-     * The column <code>public.airplane.id</code>.
+     * The column <code>jooq_DB.airplane.id</code>.
      */
-    public final TableField<AirplaneRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false).identity(true), this, "");
+    public final TableField<AirplaneRecord, Long> ID = createField(DSL.name("id"), SQLDataType.BIGINT.nullable(false).identity(true), this, "");
 
     /**
-     * The column <code>public.airplane.number</code>.
+     * The column <code>jooq_DB.airplane.number</code>.
      */
     public final TableField<AirplaneRecord, String> NUMBER = createField(DSL.name("number"), SQLDataType.VARCHAR(50).nullable(false), this, "");
 
     /**
-     * The column <code>public.airplane.model</code>.
+     * The column <code>jooq_DB.airplane.model</code>.
      */
     public final TableField<AirplaneRecord, Long> MODEL = createField(DSL.name("model"), SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.airplane.release</code>.
+     * The column <code>jooq_DB.airplane.released</code>.
      */
-    public final TableField<AirplaneRecord, LocalDate> RELEASE = createField(DSL.name("release"), SQLDataType.LOCALDATE, this, "");
+    public final TableField<AirplaneRecord, LocalDate> RELEASED = createField(DSL.name("released"), SQLDataType.LOCALDATE, this, "");
 
     private Airplane(Name alias, Table<AirplaneRecord> aliased) {
         this(alias, aliased, null);
@@ -81,21 +83,21 @@ public class Airplane extends TableImpl<AirplaneRecord> {
     }
 
     /**
-     * Create an aliased <code>public.airplane</code> table reference
+     * Create an aliased <code>jooq_DB.airplane</code> table reference
      */
     public Airplane(String alias) {
         this(DSL.name(alias), AIRPLANE);
     }
 
     /**
-     * Create an aliased <code>public.airplane</code> table reference
+     * Create an aliased <code>jooq_DB.airplane</code> table reference
      */
     public Airplane(Name alias) {
         this(alias, AIRPLANE);
     }
 
     /**
-     * Create a <code>public.airplane</code> table reference
+     * Create a <code>jooq_DB.airplane</code> table reference
      */
     public Airplane() {
         this(DSL.name("airplane"), null);
@@ -107,32 +109,37 @@ public class Airplane extends TableImpl<AirplaneRecord> {
 
     @Override
     public Schema getSchema() {
-        return aliased() ? null : Public.PUBLIC;
+        return aliased() ? null : JooqDb.JOOQ_DB;
     }
 
     @Override
-    public Identity<AirplaneRecord, Integer> getIdentity() {
-        return (Identity<AirplaneRecord, Integer>) super.getIdentity();
+    public List<Index> getIndexes() {
+        return Arrays.asList(Indexes.AIRPLANE_MODEL);
+    }
+
+    @Override
+    public Identity<AirplaneRecord, Long> getIdentity() {
+        return (Identity<AirplaneRecord, Long>) super.getIdentity();
     }
 
     @Override
     public UniqueKey<AirplaneRecord> getPrimaryKey() {
-        return Keys.AIRPLANE_PKEY;
+        return Keys.KEY_AIRPLANE_PRIMARY;
     }
 
     @Override
     public List<ForeignKey<AirplaneRecord, ?>> getReferences() {
-        return Arrays.asList(Keys.AIRPLANE__AIRPLANE_MODEL_FKEY);
+        return Arrays.asList(Keys.AIRPLANE_IBFK_1);
     }
 
     private transient Model _model;
 
     /**
-     * Get the implicit join path to the <code>public.model</code> table.
+     * Get the implicit join path to the <code>jooq_DB.model</code> table.
      */
     public Model model() {
         if (_model == null)
-            _model = new Model(this, Keys.AIRPLANE__AIRPLANE_MODEL_FKEY);
+            _model = new Model(this, Keys.AIRPLANE_IBFK_1);
 
         return _model;
     }
@@ -181,14 +188,14 @@ public class Airplane extends TableImpl<AirplaneRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row4<Integer, String, Long, LocalDate> fieldsRow() {
+    public Row4<Long, String, Long, LocalDate> fieldsRow() {
         return (Row4) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function4<? super Integer, ? super String, ? super Long, ? super LocalDate, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function4<? super Long, ? super String, ? super Long, ? super LocalDate, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -196,7 +203,7 @@ public class Airplane extends TableImpl<AirplaneRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function4<? super Integer, ? super String, ? super Long, ? super LocalDate, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function4<? super Long, ? super String, ? super Long, ? super LocalDate, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

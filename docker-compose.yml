@@ -1,12 +1,13 @@
 version: '3.9'
 
 services:
-  postgresql:
+  mysql:
     restart: always
-    image: postgres:latest
+    image: mysql:latest
     ports:
-      - "5432:5432"
+      - "3307:3306"
     environment:
-      - POSTGRES_DB=jooq_DB
-      - POSTGRES_USER=xuser
-      - POSTGRES_PASSWORD=password
+      - MYSQL_DATABASE=jooq_DB
+      - MYSQL_USER=xuser
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password

@@ -25,7 +25,7 @@ import org.jooq.impl.Internal;
 
 /**
  * A class modelling foreign key relationships and constraints of tables in
- * public.
+ * jooq_DB.
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Keys {
@@ -34,19 +34,19 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final UniqueKey<AirplaneRecord> AIRPLANE_PKEY = Internal.createUniqueKey(Airplane.AIRPLANE, DSL.name("airplane_pkey"), new TableField[] { Airplane.AIRPLANE.ID }, true);
-    public static final UniqueKey<CompanyRecord> COMPANY_PKEY = Internal.createUniqueKey(Company.COMPANY, DSL.name("company_pkey"), new TableField[] { Company.COMPANY.ID }, true);
-    public static final UniqueKey<DatabasechangeloglockRecord> DATABASECHANGELOGLOCK_PKEY = Internal.createUniqueKey(Databasechangeloglock.DATABASECHANGELOGLOCK, DSL.name("databasechangeloglock_pkey"), new TableField[] { Databasechangeloglock.DATABASECHANGELOGLOCK.ID }, true);
-    public static final UniqueKey<FlightRecord> FLIGHT_PKEY = Internal.createUniqueKey(Flight.FLIGHT, DSL.name("flight_pkey"), new TableField[] { Flight.FLIGHT.ID }, true);
-    public static final UniqueKey<ModelRecord> MODEL_PKEY = Internal.createUniqueKey(Model.MODEL, DSL.name("model_pkey"), new TableField[] { Model.MODEL.ID }, true);
-    public static final UniqueKey<PassengerRecord> PASSENGER_PKEY = Internal.createUniqueKey(Passenger.PASSENGER, DSL.name("passenger_pkey"), new TableField[] { Passenger.PASSENGER.ID }, true);
+    public static final UniqueKey<AirplaneRecord> KEY_AIRPLANE_PRIMARY = Internal.createUniqueKey(Airplane.AIRPLANE, DSL.name("KEY_airplane_PRIMARY"), new TableField[] { Airplane.AIRPLANE.ID }, true);
+    public static final UniqueKey<CompanyRecord> KEY_COMPANY_PRIMARY = Internal.createUniqueKey(Company.COMPANY, DSL.name("KEY_company_PRIMARY"), new TableField[] { Company.COMPANY.ID }, true);
+    public static final UniqueKey<DatabasechangeloglockRecord> KEY_DATABASECHANGELOGLOCK_PRIMARY = Internal.createUniqueKey(Databasechangeloglock.DATABASECHANGELOGLOCK, DSL.name("KEY_DATABASECHANGELOGLOCK_PRIMARY"), new TableField[] { Databasechangeloglock.DATABASECHANGELOGLOCK.ID }, true);
+    public static final UniqueKey<FlightRecord> KEY_FLIGHT_PRIMARY = Internal.createUniqueKey(Flight.FLIGHT, DSL.name("KEY_flight_PRIMARY"), new TableField[] { Flight.FLIGHT.ID }, true);
+    public static final UniqueKey<ModelRecord> KEY_MODEL_PRIMARY = Internal.createUniqueKey(Model.MODEL, DSL.name("KEY_model_PRIMARY"), new TableField[] { Model.MODEL.ID }, true);
+    public static final UniqueKey<PassengerRecord> KEY_PASSENGER_PRIMARY = Internal.createUniqueKey(Passenger.PASSENGER, DSL.name("KEY_passenger_PRIMARY"), new TableField[] { Passenger.PASSENGER.ID }, true);
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final ForeignKey<AirplaneRecord, ModelRecord> AIRPLANE__AIRPLANE_MODEL_FKEY = Internal.createForeignKey(Airplane.AIRPLANE, DSL.name("airplane_model_fkey"), new TableField[] { Airplane.AIRPLANE.MODEL }, Keys.MODEL_PKEY, new TableField[] { Model.MODEL.ID }, true);
-    public static final ForeignKey<FlightRecord, AirplaneRecord> FLIGHT__FLIGHT_AIRPLANE_FKEY = Internal.createForeignKey(Flight.FLIGHT, DSL.name("flight_airplane_fkey"), new TableField[] { Flight.FLIGHT.AIRPLANE }, Keys.AIRPLANE_PKEY, new TableField[] { Airplane.AIRPLANE.ID }, true);
-    public static final ForeignKey<FlightRecord, PassengerRecord> FLIGHT__FLIGHT_PASSENGER_FKEY = Internal.createForeignKey(Flight.FLIGHT, DSL.name("flight_passenger_fkey"), new TableField[] { Flight.FLIGHT.PASSENGER }, Keys.PASSENGER_PKEY, new TableField[] { Passenger.PASSENGER.ID }, true);
-    public static final ForeignKey<ModelRecord, CompanyRecord> MODEL__MODEL_COMPANY_FKEY = Internal.createForeignKey(Model.MODEL, DSL.name("model_company_fkey"), new TableField[] { Model.MODEL.COMPANY }, Keys.COMPANY_PKEY, new TableField[] { Company.COMPANY.ID }, true);
+    public static final ForeignKey<AirplaneRecord, ModelRecord> AIRPLANE_IBFK_1 = Internal.createForeignKey(Airplane.AIRPLANE, DSL.name("airplane_ibfk_1"), new TableField[] { Airplane.AIRPLANE.MODEL }, Keys.KEY_MODEL_PRIMARY, new TableField[] { Model.MODEL.ID }, true);
+    public static final ForeignKey<FlightRecord, PassengerRecord> FLIGHT_IBFK_1 = Internal.createForeignKey(Flight.FLIGHT, DSL.name("flight_ibfk_1"), new TableField[] { Flight.FLIGHT.PASSENGER }, Keys.KEY_PASSENGER_PRIMARY, new TableField[] { Passenger.PASSENGER.ID }, true);
+    public static final ForeignKey<FlightRecord, AirplaneRecord> FLIGHT_IBFK_2 = Internal.createForeignKey(Flight.FLIGHT, DSL.name("flight_ibfk_2"), new TableField[] { Flight.FLIGHT.AIRPLANE }, Keys.KEY_AIRPLANE_PRIMARY, new TableField[] { Airplane.AIRPLANE.ID }, true);
+    public static final ForeignKey<ModelRecord, CompanyRecord> MODEL_IBFK_1 = Internal.createForeignKey(Model.MODEL, DSL.name("model_ibfk_1"), new TableField[] { Model.MODEL.COMPANY }, Keys.KEY_COMPANY_PRIMARY, new TableField[] { Company.COMPANY.ID }, true);
 }

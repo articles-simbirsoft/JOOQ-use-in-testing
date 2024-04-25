@@ -8,5 +8,9 @@ public interface AirplaneFields {
     String AIRPLANE_ID_FIELD = "a.id";
     String NUMBER_FIELD = "a.number";
     String MODEL_FIELD = "a.model";
-    String RELEASE_FIELD = "a.release";
+    String RELEASE_FIELD = "a.released";
+    String AIRPLANE_ID_FIELD_NAME = "id";
+    String NUMBER_FIELD_NAME = "number";
+    String MODEL_FIELD_NAME = "model";
+    String RELEASE_FIELD_NAME = "released";
 }

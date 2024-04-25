@@ -9,13 +9,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
+import org.example.jooq.db.autocreated.Indexes;
+import org.example.jooq.db.autocreated.JooqDb;
 import org.example.jooq.db.autocreated.Keys;
-import org.example.jooq.db.autocreated.Public;
 import org.example.jooq.db.autocreated.tables.records.FlightRecord;
 import org.jooq.Field;
 import org.jooq.ForeignKey;
 import org.jooq.Function4;
 import org.jooq.Identity;
+import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Records;
@@ -40,7 +42,7 @@ public class Flight extends TableImpl<FlightRecord> {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The reference instance of <code>public.flight</code>
+     * The reference instance of <code>jooq_DB.flight</code>
      */
     public static final Flight FLIGHT = new Flight();
 
@@ -53,24 +55,24 @@ public class Flight extends TableImpl<FlightRecord> {
     }
 
     /**
-     * The column <code>public.flight.id</code>.
+     * The column <code>jooq_DB.flight.id</code>.
      */
-    public final TableField<FlightRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false).identity(true), this, "");
+    public final TableField<FlightRecord, Long> ID = createField(DSL.name("id"), SQLDataType.BIGINT.nullable(false).identity(true), this, "");
 
     /**
-     * The column <code>public.flight.passenger</code>.
+     * The column <code>jooq_DB.flight.passenger</code>.
      */
     public final TableField<FlightRecord, Long> PASSENGER = createField(DSL.name("passenger"), SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.flight.airplane</code>.
+     * The column <code>jooq_DB.flight.airplane</code>.
      */
     public final TableField<FlightRecord, Long> AIRPLANE = createField(DSL.name("airplane"), SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.flight.datetime</code>.
+     * The column <code>jooq_DB.flight.datetime</code>.
      */
-    public final TableField<FlightRecord, LocalDateTime> DATETIME = createField(DSL.name("datetime"), SQLDataType.LOCALDATETIME(6), this, "");
+    public final TableField<FlightRecord, LocalDateTime> DATETIME = createField(DSL.name("datetime"), SQLDataType.LOCALDATETIME(0), this, "");
 
     private Flight(Name alias, Table<FlightRecord> aliased) {
         this(alias, aliased, null);
@@ -81,21 +83,21 @@ public class Flight extends TableImpl<FlightRecord> {
     }
 
     /**
-     * Create an aliased <code>public.flight</code> table reference
+     * Create an aliased <code>jooq_DB.flight</code> table reference
      */
     public Flight(String alias) {
         this(DSL.name(alias), FLIGHT);
     }
 
     /**
-     * Create an aliased <code>public.flight</code> table reference
+     * Create an aliased <code>jooq_DB.flight</code> table reference
      */
     public Flight(Name alias) {
         this(alias, FLIGHT);
     }
 
     /**
-     * Create a <code>public.flight</code> table reference
+     * Create a <code>jooq_DB.flight</code> table reference
      */
     public Flight() {
         this(DSL.name("flight"), null);
@@ -107,43 +109,48 @@ public class Flight extends TableImpl<FlightRecord> {
 
     @Override
     public Schema getSchema() {
-        return aliased() ? null : Public.PUBLIC;
+        return aliased() ? null : JooqDb.JOOQ_DB;
     }
 
     @Override
-    public Identity<FlightRecord, Integer> getIdentity() {
-        return (Identity<FlightRecord, Integer>) super.getIdentity();
+    public List<Index> getIndexes() {
+        return Arrays.asList(Indexes.FLIGHT_AIRPLANE, Indexes.FLIGHT_PASSENGER);
+    }
+
+    @Override
+    public Identity<FlightRecord, Long> getIdentity() {
+        return (Identity<FlightRecord, Long>) super.getIdentity();
     }
 
     @Override
     public UniqueKey<FlightRecord> getPrimaryKey() {
-        return Keys.FLIGHT_PKEY;
+        return Keys.KEY_FLIGHT_PRIMARY;
     }
 
     @Override
     public List<ForeignKey<FlightRecord, ?>> getReferences() {
-        return Arrays.asList(Keys.FLIGHT__FLIGHT_PASSENGER_FKEY, Keys.FLIGHT__FLIGHT_AIRPLANE_FKEY);
+        return Arrays.asList(Keys.FLIGHT_IBFK_1, Keys.FLIGHT_IBFK_2);
     }
 
     private transient Passenger _passenger;
     private transient Airplane _airplane;
 
     /**
-     * Get the implicit join path to the <code>public.passenger</code> table.
+     * Get the implicit join path to the <code>jooq_DB.passenger</code> table.
      */
     public Passenger passenger() {
         if (_passenger == null)
-            _passenger = new Passenger(this, Keys.FLIGHT__FLIGHT_PASSENGER_FKEY);
+            _passenger = new Passenger(this, Keys.FLIGHT_IBFK_1);
 
         return _passenger;
     }
 
     /**
-     * Get the implicit join path to the <code>public.airplane</code> table.
+     * Get the implicit join path to the <code>jooq_DB.airplane</code> table.
      */
     public Airplane airplane() {
         if (_airplane == null)
-            _airplane = new Airplane(this, Keys.FLIGHT__FLIGHT_AIRPLANE_FKEY);
+            _airplane = new Airplane(this, Keys.FLIGHT_IBFK_2);
 
         return _airplane;
     }
@@ -192,14 +199,14 @@ public class Flight extends TableImpl<FlightRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row4<Integer, Long, Long, LocalDateTime> fieldsRow() {
+    public Row4<Long, Long, Long, LocalDateTime> fieldsRow() {
         return (Row4) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function4<? super Integer, ? super Long, ? super Long, ? super LocalDateTime, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function4<? super Long, ? super Long, ? super Long, ? super LocalDateTime, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -207,7 +214,7 @@ public class Flight extends TableImpl<FlightRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function4<? super Integer, ? super Long, ? super Long, ? super LocalDateTime, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function4<? super Long, ? super Long, ? super Long, ? super LocalDateTime, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

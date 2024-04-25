@@ -7,8 +7,8 @@ package org.example.jooq.db.autocreated.tables;
 import java.time.LocalDateTime;
 import java.util.function.Function;
 
+import org.example.jooq.db.autocreated.JooqDb;
 import org.example.jooq.db.autocreated.Keys;
-import org.example.jooq.db.autocreated.Public;
 import org.example.jooq.db.autocreated.tables.records.DatabasechangeloglockRecord;
 import org.jooq.Field;
 import org.jooq.ForeignKey;
@@ -37,7 +37,7 @@ public class Databasechangeloglock extends TableImpl<DatabasechangeloglockRecord
     private static final long serialVersionUID = 1L;
 
     /**
-     * The reference instance of <code>public.databasechangeloglock</code>
+     * The reference instance of <code>jooq_DB.DATABASECHANGELOGLOCK</code>
      */
     public static final Databasechangeloglock DATABASECHANGELOGLOCK = new Databasechangeloglock();
 
@@ -50,24 +50,24 @@ public class Databasechangeloglock extends TableImpl<DatabasechangeloglockRecord
     }
 
     /**
-     * The column <code>public.databasechangeloglock.id</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOGLOCK.ID</code>.
      */
-    public final TableField<DatabasechangeloglockRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<DatabasechangeloglockRecord, Integer> ID = createField(DSL.name("ID"), SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
-     * The column <code>public.databasechangeloglock.locked</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOGLOCK.LOCKED</code>.
      */
-    public final TableField<DatabasechangeloglockRecord, Boolean> LOCKED = createField(DSL.name("locked"), SQLDataType.BOOLEAN.nullable(false), this, "");
+    public final TableField<DatabasechangeloglockRecord, Byte> LOCKED = createField(DSL.name("LOCKED"), SQLDataType.TINYINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.databasechangeloglock.lockgranted</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOGLOCK.LOCKGRANTED</code>.
      */
-    public final TableField<DatabasechangeloglockRecord, LocalDateTime> LOCKGRANTED = createField(DSL.name("lockgranted"), SQLDataType.LOCALDATETIME(6), this, "");
+    public final TableField<DatabasechangeloglockRecord, LocalDateTime> LOCKGRANTED = createField(DSL.name("LOCKGRANTED"), SQLDataType.LOCALDATETIME(0), this, "");
 
     /**
-     * The column <code>public.databasechangeloglock.lockedby</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOGLOCK.LOCKEDBY</code>.
      */
-    public final TableField<DatabasechangeloglockRecord, String> LOCKEDBY = createField(DSL.name("lockedby"), SQLDataType.VARCHAR(255), this, "");
+    public final TableField<DatabasechangeloglockRecord, String> LOCKEDBY = createField(DSL.name("LOCKEDBY"), SQLDataType.VARCHAR(255), this, "");
 
     private Databasechangeloglock(Name alias, Table<DatabasechangeloglockRecord> aliased) {
         this(alias, aliased, null);
@@ -78,7 +78,7 @@ public class Databasechangeloglock extends TableImpl<DatabasechangeloglockRecord
     }
 
     /**
-     * Create an aliased <code>public.databasechangeloglock</code> table
+     * Create an aliased <code>jooq_DB.DATABASECHANGELOGLOCK</code> table
      * reference
      */
     public Databasechangeloglock(String alias) {
@@ -86,7 +86,7 @@ public class Databasechangeloglock extends TableImpl<DatabasechangeloglockRecord
     }
 
     /**
-     * Create an aliased <code>public.databasechangeloglock</code> table
+     * Create an aliased <code>jooq_DB.DATABASECHANGELOGLOCK</code> table
      * reference
      */
     public Databasechangeloglock(Name alias) {
@@ -94,10 +94,10 @@ public class Databasechangeloglock extends TableImpl<DatabasechangeloglockRecord
     }
 
     /**
-     * Create a <code>public.databasechangeloglock</code> table reference
+     * Create a <code>jooq_DB.DATABASECHANGELOGLOCK</code> table reference
      */
     public Databasechangeloglock() {
-        this(DSL.name("databasechangeloglock"), null);
+        this(DSL.name("DATABASECHANGELOGLOCK"), null);
     }
 
     public <O extends Record> Databasechangeloglock(Table<O> child, ForeignKey<O, DatabasechangeloglockRecord> key) {
@@ -106,12 +106,12 @@ public class Databasechangeloglock extends TableImpl<DatabasechangeloglockRecord
 
     @Override
     public Schema getSchema() {
-        return aliased() ? null : Public.PUBLIC;
+        return aliased() ? null : JooqDb.JOOQ_DB;
     }
 
     @Override
     public UniqueKey<DatabasechangeloglockRecord> getPrimaryKey() {
-        return Keys.DATABASECHANGELOGLOCK_PKEY;
+        return Keys.KEY_DATABASECHANGELOGLOCK_PRIMARY;
     }
 
     @Override
@@ -158,14 +158,14 @@ public class Databasechangeloglock extends TableImpl<DatabasechangeloglockRecord
     // -------------------------------------------------------------------------
 
     @Override
-    public Row4<Integer, Boolean, LocalDateTime, String> fieldsRow() {
+    public Row4<Integer, Byte, LocalDateTime, String> fieldsRow() {
         return (Row4) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function4<? super Integer, ? super Boolean, ? super LocalDateTime, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function4<? super Integer, ? super Byte, ? super LocalDateTime, ? super String, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -173,7 +173,7 @@ public class Databasechangeloglock extends TableImpl<DatabasechangeloglockRecord
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function4<? super Integer, ? super Boolean, ? super LocalDateTime, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function4<? super Integer, ? super Byte, ? super LocalDateTime, ? super String, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

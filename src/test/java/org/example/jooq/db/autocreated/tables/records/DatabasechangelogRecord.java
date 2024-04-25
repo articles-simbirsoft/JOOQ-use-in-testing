@@ -22,196 +22,196 @@ public class DatabasechangelogRecord extends TableRecordImpl<DatabasechangelogRe
     private static final long serialVersionUID = 1L;
 
     /**
-     * Setter for <code>public.databasechangelog.id</code>.
+     * Setter for <code>jooq_DB.DATABASECHANGELOG.ID</code>.
      */
     public void setId(String value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>public.databasechangelog.id</code>.
+     * Getter for <code>jooq_DB.DATABASECHANGELOG.ID</code>.
      */
     public String getId() {
         return (String) get(0);
     }
 
     /**
-     * Setter for <code>public.databasechangelog.author</code>.
+     * Setter for <code>jooq_DB.DATABASECHANGELOG.AUTHOR</code>.
      */
     public void setAuthor(String value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>public.databasechangelog.author</code>.
+     * Getter for <code>jooq_DB.DATABASECHANGELOG.AUTHOR</code>.
      */
     public String getAuthor() {
         return (String) get(1);
     }
 
     /**
-     * Setter for <code>public.databasechangelog.filename</code>.
+     * Setter for <code>jooq_DB.DATABASECHANGELOG.FILENAME</code>.
      */
     public void setFilename(String value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>public.databasechangelog.filename</code>.
+     * Getter for <code>jooq_DB.DATABASECHANGELOG.FILENAME</code>.
      */
     public String getFilename() {
         return (String) get(2);
     }
 
     /**
-     * Setter for <code>public.databasechangelog.dateexecuted</code>.
+     * Setter for <code>jooq_DB.DATABASECHANGELOG.DATEEXECUTED</code>.
      */
     public void setDateexecuted(LocalDateTime value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>public.databasechangelog.dateexecuted</code>.
+     * Getter for <code>jooq_DB.DATABASECHANGELOG.DATEEXECUTED</code>.
      */
     public LocalDateTime getDateexecuted() {
         return (LocalDateTime) get(3);
     }
 
     /**
-     * Setter for <code>public.databasechangelog.orderexecuted</code>.
+     * Setter for <code>jooq_DB.DATABASECHANGELOG.ORDEREXECUTED</code>.
      */
     public void setOrderexecuted(Integer value) {
         set(4, value);
     }
 
     /**
-     * Getter for <code>public.databasechangelog.orderexecuted</code>.
+     * Getter for <code>jooq_DB.DATABASECHANGELOG.ORDEREXECUTED</code>.
      */
     public Integer getOrderexecuted() {
         return (Integer) get(4);
     }
 
     /**
-     * Setter for <code>public.databasechangelog.exectype</code>.
+     * Setter for <code>jooq_DB.DATABASECHANGELOG.EXECTYPE</code>.
      */
     public void setExectype(String value) {
         set(5, value);
     }
 
     /**
-     * Getter for <code>public.databasechangelog.exectype</code>.
+     * Getter for <code>jooq_DB.DATABASECHANGELOG.EXECTYPE</code>.
      */
     public String getExectype() {
         return (String) get(5);
     }
 
     /**
-     * Setter for <code>public.databasechangelog.md5sum</code>.
+     * Setter for <code>jooq_DB.DATABASECHANGELOG.MD5SUM</code>.
      */
     public void setMd5sum(String value) {
         set(6, value);
     }
 
     /**
-     * Getter for <code>public.databasechangelog.md5sum</code>.
+     * Getter for <code>jooq_DB.DATABASECHANGELOG.MD5SUM</code>.
      */
     public String getMd5sum() {
         return (String) get(6);
     }
 
     /**
-     * Setter for <code>public.databasechangelog.description</code>.
+     * Setter for <code>jooq_DB.DATABASECHANGELOG.DESCRIPTION</code>.
      */
     public void setDescription(String value) {
         set(7, value);
     }
 
     /**
-     * Getter for <code>public.databasechangelog.description</code>.
+     * Getter for <code>jooq_DB.DATABASECHANGELOG.DESCRIPTION</code>.
      */
     public String getDescription() {
         return (String) get(7);
     }
 
     /**
-     * Setter for <code>public.databasechangelog.comments</code>.
+     * Setter for <code>jooq_DB.DATABASECHANGELOG.COMMENTS</code>.
      */
     public void setComments(String value) {
         set(8, value);
     }
 
     /**
-     * Getter for <code>public.databasechangelog.comments</code>.
+     * Getter for <code>jooq_DB.DATABASECHANGELOG.COMMENTS</code>.
      */
     public String getComments() {
         return (String) get(8);
     }
 
     /**
-     * Setter for <code>public.databasechangelog.tag</code>.
+     * Setter for <code>jooq_DB.DATABASECHANGELOG.TAG</code>.
      */
     public void setTag(String value) {
         set(9, value);
     }
 
     /**
-     * Getter for <code>public.databasechangelog.tag</code>.
+     * Getter for <code>jooq_DB.DATABASECHANGELOG.TAG</code>.
      */
     public String getTag() {
         return (String) get(9);
     }
 
     /**
-     * Setter for <code>public.databasechangelog.liquibase</code>.
+     * Setter for <code>jooq_DB.DATABASECHANGELOG.LIQUIBASE</code>.
      */
     public void setLiquibase(String value) {
         set(10, value);
     }
 
     /**
-     * Getter for <code>public.databasechangelog.liquibase</code>.
+     * Getter for <code>jooq_DB.DATABASECHANGELOG.LIQUIBASE</code>.
      */
     public String getLiquibase() {
         return (String) get(10);
     }
 
     /**
-     * Setter for <code>public.databasechangelog.contexts</code>.
+     * Setter for <code>jooq_DB.DATABASECHANGELOG.CONTEXTS</code>.
      */
     public void setContexts(String value) {
         set(11, value);
     }
 
     /**
-     * Getter for <code>public.databasechangelog.contexts</code>.
+     * Getter for <code>jooq_DB.DATABASECHANGELOG.CONTEXTS</code>.
      */
     public String getContexts() {
         return (String) get(11);
     }
 
     /**
-     * Setter for <code>public.databasechangelog.labels</code>.
+     * Setter for <code>jooq_DB.DATABASECHANGELOG.LABELS</code>.
      */
     public void setLabels(String value) {
         set(12, value);
     }
 
     /**
-     * Getter for <code>public.databasechangelog.labels</code>.
+     * Getter for <code>jooq_DB.DATABASECHANGELOG.LABELS</code>.
      */
     public String getLabels() {
         return (String) get(12);
     }
 
     /**
-     * Setter for <code>public.databasechangelog.deployment_id</code>.
+     * Setter for <code>jooq_DB.DATABASECHANGELOG.DEPLOYMENT_ID</code>.
      */
     public void setDeploymentId(String value) {
         set(13, value);
     }
 
     /**
-     * Getter for <code>public.databasechangelog.deployment_id</code>.
+     * Getter for <code>jooq_DB.DATABASECHANGELOG.DEPLOYMENT_ID</code>.
      */
     public String getDeploymentId() {
         return (String) get(13);

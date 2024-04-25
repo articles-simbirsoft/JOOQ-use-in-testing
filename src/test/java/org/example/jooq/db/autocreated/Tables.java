@@ -14,43 +14,43 @@ import org.example.jooq.db.autocreated.tables.Passenger;
 
 
 /**
- * Convenience access to all tables in public.
+ * Convenience access to all tables in jooq_DB.
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tables {
 
     /**
-     * The table <code>public.airplane</code>.
+     * The table <code>jooq_DB.airplane</code>.
      */
     public static final Airplane AIRPLANE = Airplane.AIRPLANE;
 
     /**
-     * The table <code>public.company</code>.
+     * The table <code>jooq_DB.company</code>.
      */
     public static final Company COMPANY = Company.COMPANY;
 
     /**
-     * The table <code>public.databasechangelog</code>.
+     * The table <code>jooq_DB.DATABASECHANGELOG</code>.
      */
     public static final Databasechangelog DATABASECHANGELOG = Databasechangelog.DATABASECHANGELOG;
 
     /**
-     * The table <code>public.databasechangeloglock</code>.
+     * The table <code>jooq_DB.DATABASECHANGELOGLOCK</code>.
      */
     public static final Databasechangeloglock DATABASECHANGELOGLOCK = Databasechangeloglock.DATABASECHANGELOGLOCK;
 
     /**
-     * The table <code>public.flight</code>.
+     * The table <code>jooq_DB.flight</code>.
      */
     public static final Flight FLIGHT = Flight.FLIGHT;
 
     /**
-     * The table <code>public.model</code>.
+     * The table <code>jooq_DB.model</code>.
      */
     public static final Model MODEL = Model.MODEL;
 
     /**
-     * The table <code>public.passenger</code>.
+     * The table <code>jooq_DB.passenger</code>.
      */
     public static final Passenger PASSENGER = Passenger.PASSENGER;
 }

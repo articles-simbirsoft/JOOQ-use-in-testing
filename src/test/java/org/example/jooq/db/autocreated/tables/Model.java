@@ -8,13 +8,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
+import org.example.jooq.db.autocreated.Indexes;
+import org.example.jooq.db.autocreated.JooqDb;
 import org.example.jooq.db.autocreated.Keys;
-import org.example.jooq.db.autocreated.Public;
 import org.example.jooq.db.autocreated.tables.records.ModelRecord;
 import org.jooq.Field;
 import org.jooq.ForeignKey;
 import org.jooq.Function3;
-import org.jooq.Identity;
+import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Records;
@@ -39,7 +40,7 @@ public class Model extends TableImpl<ModelRecord> {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The reference instance of <code>public.model</code>
+     * The reference instance of <code>jooq_DB.model</code>
      */
     public static final Model MODEL = new Model();
 
@@ -52,17 +53,17 @@ public class Model extends TableImpl<ModelRecord> {
     }
 
     /**
-     * The column <code>public.model.id</code>.
+     * The column <code>jooq_DB.model.id</code>.
      */
-    public final TableField<ModelRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false).identity(true), this, "");
+    public final TableField<ModelRecord, Long> ID = createField(DSL.name("id"), SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.model.name</code>.
+     * The column <code>jooq_DB.model.name</code>.
      */
     public final TableField<ModelRecord, String> NAME = createField(DSL.name("name"), SQLDataType.VARCHAR(50).nullable(false), this, "");
 
     /**
-     * The column <code>public.model.company</code>.
+     * The column <code>jooq_DB.model.company</code>.
      */
     public final TableField<ModelRecord, Long> COMPANY = createField(DSL.name("company"), SQLDataType.BIGINT.nullable(false), this, "");
 
@@ -75,21 +76,21 @@ public class Model extends TableImpl<ModelRecord> {
     }
 
     /**
-     * Create an aliased <code>public.model</code> table reference
+     * Create an aliased <code>jooq_DB.model</code> table reference
      */
     public Model(String alias) {
         this(DSL.name(alias), MODEL);
     }
 
     /**
-     * Create an aliased <code>public.model</code> table reference
+     * Create an aliased <code>jooq_DB.model</code> table reference
      */
     public Model(Name alias) {
         this(alias, MODEL);
     }
 
     /**
-     * Create a <code>public.model</code> table reference
+     * Create a <code>jooq_DB.model</code> table reference
      */
     public Model() {
         this(DSL.name("model"), null);
@@ -101,32 +102,32 @@ public class Model extends TableImpl<ModelRecord> {
 
     @Override
     public Schema getSchema() {
-        return aliased() ? null : Public.PUBLIC;
+        return aliased() ? null : JooqDb.JOOQ_DB;
     }
 
     @Override
-    public Identity<ModelRecord, Integer> getIdentity() {
-        return (Identity<ModelRecord, Integer>) super.getIdentity();
+    public List<Index> getIndexes() {
+        return Arrays.asList(Indexes.MODEL_COMPANY);
     }
 
     @Override
     public UniqueKey<ModelRecord> getPrimaryKey() {
-        return Keys.MODEL_PKEY;
+        return Keys.KEY_MODEL_PRIMARY;
     }
 
     @Override
     public List<ForeignKey<ModelRecord, ?>> getReferences() {
-        return Arrays.asList(Keys.MODEL__MODEL_COMPANY_FKEY);
+        return Arrays.asList(Keys.MODEL_IBFK_1);
     }
 
     private transient Company _company;
 
     /**
-     * Get the implicit join path to the <code>public.company</code> table.
+     * Get the implicit join path to the <code>jooq_DB.company</code> table.
      */
     public Company company() {
         if (_company == null)
-            _company = new Company(this, Keys.MODEL__MODEL_COMPANY_FKEY);
+            _company = new Company(this, Keys.MODEL_IBFK_1);
 
         return _company;
     }
@@ -175,14 +176,14 @@ public class Model extends TableImpl<ModelRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row3<Integer, String, Long> fieldsRow() {
+    public Row3<Long, String, Long> fieldsRow() {
         return (Row3) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function3<? super Integer, ? super String, ? super Long, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function3<? super Long, ? super String, ? super Long, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -190,7 +191,7 @@ public class Model extends TableImpl<ModelRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function3<? super Integer, ? super String, ? super Long, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function3<? super Long, ? super String, ? super Long, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

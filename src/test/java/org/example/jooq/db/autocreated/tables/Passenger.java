@@ -7,8 +7,8 @@ package org.example.jooq.db.autocreated.tables;
 import java.time.LocalDate;
 import java.util.function.Function;
 
+import org.example.jooq.db.autocreated.JooqDb;
 import org.example.jooq.db.autocreated.Keys;
-import org.example.jooq.db.autocreated.Public;
 import org.example.jooq.db.autocreated.tables.records.PassengerRecord;
 import org.jooq.Field;
 import org.jooq.ForeignKey;
@@ -38,7 +38,7 @@ public class Passenger extends TableImpl<PassengerRecord> {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The reference instance of <code>public.passenger</code>
+     * The reference instance of <code>jooq_DB.passenger</code>
      */
     public static final Passenger PASSENGER = new Passenger();
 
@@ -51,22 +51,22 @@ public class Passenger extends TableImpl<PassengerRecord> {
     }
 
     /**
-     * The column <code>public.passenger.id</code>.
+     * The column <code>jooq_DB.passenger.id</code>.
      */
-    public final TableField<PassengerRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false).identity(true), this, "");
+    public final TableField<PassengerRecord, Long> ID = createField(DSL.name("id"), SQLDataType.BIGINT.nullable(false).identity(true), this, "");
 
     /**
-     * The column <code>public.passenger.fullname</code>.
+     * The column <code>jooq_DB.passenger.fullname</code>.
      */
     public final TableField<PassengerRecord, String> FULLNAME = createField(DSL.name("fullname"), SQLDataType.VARCHAR(100).nullable(false), this, "");
 
     /**
-     * The column <code>public.passenger.passport_details</code>.
+     * The column <code>jooq_DB.passenger.passport_details</code>.
      */
     public final TableField<PassengerRecord, String> PASSPORT_DETAILS = createField(DSL.name("passport_details"), SQLDataType.VARCHAR(100).nullable(false), this, "");
 
     /**
-     * The column <code>public.passenger.birthdate</code>.
+     * The column <code>jooq_DB.passenger.birthdate</code>.
      */
     public final TableField<PassengerRecord, LocalDate> BIRTHDATE = createField(DSL.name("birthdate"), SQLDataType.LOCALDATE, this, "");
 
@@ -79,21 +79,21 @@ public class Passenger extends TableImpl<PassengerRecord> {
     }
 
     /**
-     * Create an aliased <code>public.passenger</code> table reference
+     * Create an aliased <code>jooq_DB.passenger</code> table reference
      */
     public Passenger(String alias) {
         this(DSL.name(alias), PASSENGER);
     }
 
     /**
-     * Create an aliased <code>public.passenger</code> table reference
+     * Create an aliased <code>jooq_DB.passenger</code> table reference
      */
     public Passenger(Name alias) {
         this(alias, PASSENGER);
     }
 
     /**
-     * Create a <code>public.passenger</code> table reference
+     * Create a <code>jooq_DB.passenger</code> table reference
      */
     public Passenger() {
         this(DSL.name("passenger"), null);
@@ -105,17 +105,17 @@ public class Passenger extends TableImpl<PassengerRecord> {
 
     @Override
     public Schema getSchema() {
-        return aliased() ? null : Public.PUBLIC;
+        return aliased() ? null : JooqDb.JOOQ_DB;
     }
 
     @Override
-    public Identity<PassengerRecord, Integer> getIdentity() {
-        return (Identity<PassengerRecord, Integer>) super.getIdentity();
+    public Identity<PassengerRecord, Long> getIdentity() {
+        return (Identity<PassengerRecord, Long>) super.getIdentity();
     }
 
     @Override
     public UniqueKey<PassengerRecord> getPrimaryKey() {
-        return Keys.PASSENGER_PKEY;
+        return Keys.KEY_PASSENGER_PRIMARY;
     }
 
     @Override
@@ -162,14 +162,14 @@ public class Passenger extends TableImpl<PassengerRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row4<Integer, String, String, LocalDate> fieldsRow() {
+    public Row4<Long, String, String, LocalDate> fieldsRow() {
         return (Row4) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function4<? super Integer, ? super String, ? super String, ? super LocalDate, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function4<? super Long, ? super String, ? super String, ? super LocalDate, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -177,7 +177,7 @@ public class Passenger extends TableImpl<PassengerRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function4<? super Integer, ? super String, ? super String, ? super LocalDate, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function4<? super Long, ? super String, ? super String, ? super LocalDate, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

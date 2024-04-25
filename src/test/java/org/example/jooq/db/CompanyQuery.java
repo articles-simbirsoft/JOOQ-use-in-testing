@@ -8,7 +8,7 @@ import org.example.jooq.dto.CompanyDto;
  */
 public class CompanyQuery extends DefaultQuery {
 
-    public CompanyDto getCompanyById(Integer id) {
+    public CompanyDto getCompanyById(Long id) {
         return context.select()
                 .from(Company.COMPANY)
                 .where(Company.COMPANY.ID.eq(id))

@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AirplaneDto {
-    private Integer id;
+    private Long id;
     private String number;
     private ModelDto model;
     private LocalDate release;

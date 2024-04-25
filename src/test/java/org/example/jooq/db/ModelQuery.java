@@ -11,7 +11,7 @@ public class ModelQuery extends DefaultQuery {
     public ModelDto getModelById(Long id) {
         return context.select()
                 .from(Model.MODEL)
-                .where(Model.MODEL.ID.eq(id.intValue()))
+                .where(Model.MODEL.ID.eq(id))
                 .fetch()
                 .map(this::getModelDtoByRecord)
                 .get(0);

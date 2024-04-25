@@ -45,7 +45,7 @@ public final class DatabaseConnector {
 
     public static DSLContext getContext() {
         if (context == null) {
-            context = DSL.using(connection, SQLDialect.POSTGRES);
+            context = DSL.using(connection, SQLDialect.MYSQL);
             try {
                 GenerationTool.generate(
                         Files.readString(
@@ -53,6 +53,7 @@ public final class DatabaseConnector {
                         )
                 );
             } catch (Exception ignored) {
+                new RuntimeException();
             }
         }
         return context;

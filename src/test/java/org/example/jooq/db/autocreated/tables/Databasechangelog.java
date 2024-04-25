@@ -7,7 +7,7 @@ package org.example.jooq.db.autocreated.tables;
 import java.time.LocalDateTime;
 import java.util.function.Function;
 
-import org.example.jooq.db.autocreated.Public;
+import org.example.jooq.db.autocreated.JooqDb;
 import org.example.jooq.db.autocreated.tables.records.DatabasechangelogRecord;
 import org.jooq.Field;
 import org.jooq.ForeignKey;
@@ -35,7 +35,7 @@ public class Databasechangelog extends TableImpl<DatabasechangelogRecord> {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The reference instance of <code>public.databasechangelog</code>
+     * The reference instance of <code>jooq_DB.DATABASECHANGELOG</code>
      */
     public static final Databasechangelog DATABASECHANGELOG = new Databasechangelog();
 
@@ -48,74 +48,74 @@ public class Databasechangelog extends TableImpl<DatabasechangelogRecord> {
     }
 
     /**
-     * The column <code>public.databasechangelog.id</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOG.ID</code>.
      */
-    public final TableField<DatabasechangelogRecord, String> ID = createField(DSL.name("id"), SQLDataType.VARCHAR(255).nullable(false), this, "");
+    public final TableField<DatabasechangelogRecord, String> ID = createField(DSL.name("ID"), SQLDataType.VARCHAR(255).nullable(false), this, "");
 
     /**
-     * The column <code>public.databasechangelog.author</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOG.AUTHOR</code>.
      */
-    public final TableField<DatabasechangelogRecord, String> AUTHOR = createField(DSL.name("author"), SQLDataType.VARCHAR(255).nullable(false), this, "");
+    public final TableField<DatabasechangelogRecord, String> AUTHOR = createField(DSL.name("AUTHOR"), SQLDataType.VARCHAR(255).nullable(false), this, "");
 
     /**
-     * The column <code>public.databasechangelog.filename</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOG.FILENAME</code>.
      */
-    public final TableField<DatabasechangelogRecord, String> FILENAME = createField(DSL.name("filename"), SQLDataType.VARCHAR(255).nullable(false), this, "");
+    public final TableField<DatabasechangelogRecord, String> FILENAME = createField(DSL.name("FILENAME"), SQLDataType.VARCHAR(255).nullable(false), this, "");
 
     /**
-     * The column <code>public.databasechangelog.dateexecuted</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOG.DATEEXECUTED</code>.
      */
-    public final TableField<DatabasechangelogRecord, LocalDateTime> DATEEXECUTED = createField(DSL.name("dateexecuted"), SQLDataType.LOCALDATETIME(6).nullable(false), this, "");
+    public final TableField<DatabasechangelogRecord, LocalDateTime> DATEEXECUTED = createField(DSL.name("DATEEXECUTED"), SQLDataType.LOCALDATETIME(0).nullable(false), this, "");
 
     /**
-     * The column <code>public.databasechangelog.orderexecuted</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOG.ORDEREXECUTED</code>.
      */
-    public final TableField<DatabasechangelogRecord, Integer> ORDEREXECUTED = createField(DSL.name("orderexecuted"), SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<DatabasechangelogRecord, Integer> ORDEREXECUTED = createField(DSL.name("ORDEREXECUTED"), SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
-     * The column <code>public.databasechangelog.exectype</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOG.EXECTYPE</code>.
      */
-    public final TableField<DatabasechangelogRecord, String> EXECTYPE = createField(DSL.name("exectype"), SQLDataType.VARCHAR(10).nullable(false), this, "");
+    public final TableField<DatabasechangelogRecord, String> EXECTYPE = createField(DSL.name("EXECTYPE"), SQLDataType.VARCHAR(10).nullable(false), this, "");
 
     /**
-     * The column <code>public.databasechangelog.md5sum</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOG.MD5SUM</code>.
      */
-    public final TableField<DatabasechangelogRecord, String> MD5SUM = createField(DSL.name("md5sum"), SQLDataType.VARCHAR(35), this, "");
+    public final TableField<DatabasechangelogRecord, String> MD5SUM = createField(DSL.name("MD5SUM"), SQLDataType.VARCHAR(35), this, "");
 
     /**
-     * The column <code>public.databasechangelog.description</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOG.DESCRIPTION</code>.
      */
-    public final TableField<DatabasechangelogRecord, String> DESCRIPTION = createField(DSL.name("description"), SQLDataType.VARCHAR(255), this, "");
+    public final TableField<DatabasechangelogRecord, String> DESCRIPTION = createField(DSL.name("DESCRIPTION"), SQLDataType.VARCHAR(255), this, "");
 
     /**
-     * The column <code>public.databasechangelog.comments</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOG.COMMENTS</code>.
      */
-    public final TableField<DatabasechangelogRecord, String> COMMENTS = createField(DSL.name("comments"), SQLDataType.VARCHAR(255), this, "");
+    public final TableField<DatabasechangelogRecord, String> COMMENTS = createField(DSL.name("COMMENTS"), SQLDataType.VARCHAR(255), this, "");
 
     /**
-     * The column <code>public.databasechangelog.tag</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOG.TAG</code>.
      */
-    public final TableField<DatabasechangelogRecord, String> TAG = createField(DSL.name("tag"), SQLDataType.VARCHAR(255), this, "");
+    public final TableField<DatabasechangelogRecord, String> TAG = createField(DSL.name("TAG"), SQLDataType.VARCHAR(255), this, "");
 
     /**
-     * The column <code>public.databasechangelog.liquibase</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOG.LIQUIBASE</code>.
      */
-    public final TableField<DatabasechangelogRecord, String> LIQUIBASE = createField(DSL.name("liquibase"), SQLDataType.VARCHAR(20), this, "");
+    public final TableField<DatabasechangelogRecord, String> LIQUIBASE = createField(DSL.name("LIQUIBASE"), SQLDataType.VARCHAR(20), this, "");
 
     /**
-     * The column <code>public.databasechangelog.contexts</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOG.CONTEXTS</code>.
      */
-    public final TableField<DatabasechangelogRecord, String> CONTEXTS = createField(DSL.name("contexts"), SQLDataType.VARCHAR(255), this, "");
+    public final TableField<DatabasechangelogRecord, String> CONTEXTS = createField(DSL.name("CONTEXTS"), SQLDataType.VARCHAR(255), this, "");
 
     /**
-     * The column <code>public.databasechangelog.labels</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOG.LABELS</code>.
      */
-    public final TableField<DatabasechangelogRecord, String> LABELS = createField(DSL.name("labels"), SQLDataType.VARCHAR(255), this, "");
+    public final TableField<DatabasechangelogRecord, String> LABELS = createField(DSL.name("LABELS"), SQLDataType.VARCHAR(255), this, "");
 
     /**
-     * The column <code>public.databasechangelog.deployment_id</code>.
+     * The column <code>jooq_DB.DATABASECHANGELOG.DEPLOYMENT_ID</code>.
      */
-    public final TableField<DatabasechangelogRecord, String> DEPLOYMENT_ID = createField(DSL.name("deployment_id"), SQLDataType.VARCHAR(10), this, "");
+    public final TableField<DatabasechangelogRecord, String> DEPLOYMENT_ID = createField(DSL.name("DEPLOYMENT_ID"), SQLDataType.VARCHAR(10), this, "");
 
     private Databasechangelog(Name alias, Table<DatabasechangelogRecord> aliased) {
         this(alias, aliased, null);
@@ -126,24 +126,24 @@ public class Databasechangelog extends TableImpl<DatabasechangelogRecord> {
     }
 
     /**
-     * Create an aliased <code>public.databasechangelog</code> table reference
+     * Create an aliased <code>jooq_DB.DATABASECHANGELOG</code> table reference
      */
     public Databasechangelog(String alias) {
         this(DSL.name(alias), DATABASECHANGELOG);
     }
 
     /**
-     * Create an aliased <code>public.databasechangelog</code> table reference
+     * Create an aliased <code>jooq_DB.DATABASECHANGELOG</code> table reference
      */
     public Databasechangelog(Name alias) {
         this(alias, DATABASECHANGELOG);
     }
 
     /**
-     * Create a <code>public.databasechangelog</code> table reference
+     * Create a <code>jooq_DB.DATABASECHANGELOG</code> table reference
      */
     public Databasechangelog() {
-        this(DSL.name("databasechangelog"), null);
+        this(DSL.name("DATABASECHANGELOG"), null);
     }
 
     public <O extends Record> Databasechangelog(Table<O> child, ForeignKey<O, DatabasechangelogRecord> key) {
@@ -152,7 +152,7 @@ public class Databasechangelog extends TableImpl<DatabasechangelogRecord> {
 
     @Override
     public Schema getSchema() {
-        return aliased() ? null : Public.PUBLIC;
+        return aliased() ? null : JooqDb.JOOQ_DB;
     }
 
     @Override

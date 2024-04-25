@@ -8,7 +8,7 @@ import org.example.jooq.db.autocreated.tables.Airplane;
  */
 public class AirplaneQuery extends DefaultQuery {
 
-    public AirplaneDto getAirplaneById(Integer id) {
+    public AirplaneDto getAirplaneById(Long id) {
         return context.select()
                 .from(Airplane.AIRPLANE)
                 .where(Airplane.AIRPLANE.ID.eq(id))
