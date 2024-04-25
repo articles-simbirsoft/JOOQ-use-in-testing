@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Properties;
 
 /**
- * Class provides configuration parameters from files setted by system
+ * Class provides configuration parameters from files set by system
  * properties.
  */
 public final class ParametersProvider {

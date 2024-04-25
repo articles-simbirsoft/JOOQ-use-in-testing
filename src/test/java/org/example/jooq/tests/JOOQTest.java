@@ -9,5 +9,6 @@ public class JOOQTest {
     @Test
     public void checkGetTestDataInDB() {
         AirplaneDto airplane = new AirplaneQuery().getAirplaneById(1);
+        System.out.println(airplane);
     }
 }

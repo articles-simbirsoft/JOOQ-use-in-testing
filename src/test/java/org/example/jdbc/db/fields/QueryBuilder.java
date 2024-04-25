@@ -3,7 +3,7 @@ package org.example.jdbc.db.fields;
 /**
  * Class for build db query.
  */
-public class QueryBuilder implements AirplaneFields, CompanyFields, ModelFields, FlightFields, PassengerFields {
+public class QueryBuilder implements AirplaneFields, CompanyFields, ModelFields {
     private final StringBuffer query = new StringBuffer();
 
     public String build() {

@@ -4,8 +4,6 @@ import org.example.jdbc.db.fields.AirplaneFields;
 import org.example.jdbc.db.fields.ModelFields;
 import org.example.jdbc.db.fields.QueryBuilder;
 import org.example.jdbc.dto.AirplaneDto;
-import org.example.jdbc.dto.ModelDto;
-import org.testng.Assert;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,12 +15,11 @@ import java.sql.Statement;
 public class AirplaneQuery extends DefaultQuery implements AirplaneFields, ModelFields {
 
     public AirplaneDto getAirplaneById(Long id) {
-        AirplaneDto dto = null;
+        AirplaneDto dto;
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(
-                    getAirplaneByIdStringQuery(id));
-            resultSet.next();
+            String query = getAirplaneByIdStringQuery(id);
+            ResultSet resultSet = statement.executeQuery(query);
             dto = getAirplaneDto(resultSet);
 
         } catch (SQLException e) {
@@ -33,12 +30,12 @@ public class AirplaneQuery extends DefaultQuery implements AirplaneFields, Model
 
     private static AirplaneDto getAirplaneDto(ResultSet resultSet) throws SQLException {
         AirplaneDto airplaneDto = null;
-        if (resultSet.getInt(AIRPLANE_ID_FIELD) != 0) {
+        if (resultSet.next()) {
             airplaneDto = new AirplaneDto(
-                    resultSet.getInt(AIRPLANE_ID_FIELD),
-                    resultSet.getString(NUMBER_FIELD),
-                    new ModelQuery().getModelById(resultSet.getLong(MODEL_FIELD)),
-                    resultSet.getDate(RELEASE_FIELD).toLocalDate());
+                    resultSet.getInt(AIRPLANE_ID_FIELD_NAME),
+                    resultSet.getString(NUMBER_FIELD_NAME),
+                    new ModelQuery().getModelById(resultSet.getLong(MODEL_FIELD_NAME)),
+                    resultSet.getDate(RELEASE_FIELD_NAME).toLocalDate());
         }
         return airplaneDto;
     }

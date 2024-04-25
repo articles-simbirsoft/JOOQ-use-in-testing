@@ -9,5 +9,6 @@ public class JDBCTest {
     @Test
     public void checkGetTestDataInDB() {
         AirplaneDto airplaneById = new AirplaneQuery().getAirplaneById(1L);
+        System.out.println(airplaneById);
     }
 }

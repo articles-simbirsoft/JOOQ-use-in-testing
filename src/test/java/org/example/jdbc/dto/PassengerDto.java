@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class PassengerDto {
     private Long id;
-    private String fullname;
+    private String fullName;
     private String passportDetails;
     private LocalDate birthdate;
 }

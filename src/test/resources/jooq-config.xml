@@ -3,7 +3,7 @@
 
     <jdbc>
         <driver>org.postgresql.Driver</driver>
-        <url>jdbc:postgresql://localhost:5432/jooq_DB</url>
+        <url>jdbc:postgresql://localhost:5433/jooq_DB</url>
         <user>xuser</user>
         <password>password</password>
     </jdbc>
