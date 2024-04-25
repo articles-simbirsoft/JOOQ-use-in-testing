@@ -1,0 +1,1 @@
+# JOOQ-use-in-testing
